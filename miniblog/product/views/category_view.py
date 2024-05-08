@@ -15,8 +15,8 @@ def category_create(request):
     return render(request, 'categories/create.html')
 
 def category_delete(request, id):
-    categoria = repo.get_by_id(id=id)
-    repo.delete(category=categoria)
+    categoria = repo.get_by_id(id = id)
+    repo.delete(categoria)
     return redirect('category_list')
 
 def category_update(request, id):
@@ -25,7 +25,7 @@ def category_update(request, id):
     if request.method == "POST":
         name = request.POST.get('name')
     
-        repo.update(category = category, nombre = name)
+        repo.update(category, nombre = name)
         return redirect('category_list')
 
     return render(request, 'categories/update.html', dict(category = category))

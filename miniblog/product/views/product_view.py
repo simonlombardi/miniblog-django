@@ -41,7 +41,7 @@ def product_update(request, id):
             raise ValueError("El stock no puede ser negativo")
         id_category = request.POST.get('id_category')
         category = Category.objects.get(id = int(id_category))
-        repo.update(producto = product, nombre = name, precio = price, descripcion= description, stock = stock, categoria = category)
+        repo.update(producto = product, nombre = name, precio = price, descripcion = description, stock = stock, categoria = category)
         return redirect('product_detail', product.id)
 
     return render(request, 'products/update.html', dict(categories = categorias, product = product))
