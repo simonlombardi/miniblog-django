@@ -7,22 +7,27 @@ class ProductReviewView(View):
     def get(self, request):
         repo = ProductReviewRepository()
         reviews = repo.get_all()
-        return render(request,"product_review/list.html"), dict(reviews = reviews)
+        return render(request,"product_review/list.html", dict(reviews = reviews))
 
 class ProductReviewCreateView(View):
     def get(self, request):
-        products = ProductRepository.get_all()
-        return render(request, "product_review_create.html", dict(products = products))
+        repo_product = ProductRepository()
+        products = repo_product.get_all()
+        return render(request, "product_review/create.html", dict(products = products))
     
     def post(self, request):
+        repo = ProductReviewRepository()
+
         product_id = request.POST.get("id_producto")
         review = request.POST.get("opinion")
         value = request.POST.get("valoracion")
         user = request.user
-        ProductReviewRepository.create(
-            product_id=product_id,
-            author=user,
-            text=review,
-            rating=value
+        print(user)
+
+        repo.create(
+            product_id = product_id,
+            author = user,
+            text = review,
+            rating = value,
         )
         return redirect("product_reviews")

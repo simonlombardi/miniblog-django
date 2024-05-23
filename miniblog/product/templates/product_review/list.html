@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container mt-3">
     <h2>Lista de opiniones</h2>
-    <a href="{% url 'product_create' %}" class="btn btn-primary mb-3">Crear una opinion</a>
+    <a href="{% url 'product_reviews_create' %}" class="btn btn-primary mb-3">Crear una opinion</a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -17,7 +17,7 @@
             {% for review in reviews %}
             <tr>
                 <td>{{ review.product }}</td>
-                <td>{{ review.author.first_name }} {{ review.author.last_name }}</td>
+                <td>{{ review.author }}</td>
                 <td>{{ review.text }}</td>
                 <td>{{ review.date }}</td>
                 <td>{{ review.rating }}</td>
