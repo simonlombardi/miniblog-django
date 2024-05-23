@@ -14,6 +14,13 @@
             <a class="navbar-brand" href="{% url 'product_list' %}">Lista de productos</a>
             <a class="navbar-brand" href="{% url 'category_list' %}">Lista de categoria</a>
             <a class="navbar-brand" href="{% url 'supplier_list' %}">Lista de proveedores</a>
+            <a class="navbar-brand" href="{% url 'product_reviews' %}">Lista de opiniones</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="btn btn-danger">Salir</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-success">Ingresar</a>
+            {% endif %}
 
         </div>
     </nav>

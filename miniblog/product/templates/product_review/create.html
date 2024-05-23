@@ -1,11 +1,11 @@
 {% extends "home/base.html" %}
 {% block content %}
 <div class="container mt-3">
-    <h2>Crear Producto</h2>
+    <h2>Mi opinion</h2>
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label>Nombre</label>
+            <label>Producto</label>
             <input type="text" name="name" class="form-control" required>
         </div>
         <div class="form-group">

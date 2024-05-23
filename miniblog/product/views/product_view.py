@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-
+from django.contrib.auth.decorators import login_required
 from product.models import Category
 from product.repositories.product import ProductRepository
 
@@ -15,6 +15,7 @@ def product_list(request):
         )
     )
 
+@login_required(login_url="login")
 def product_detail(request, id):
     producto = repo.get_by_id(id=id)
     return render(
@@ -26,6 +27,7 @@ def product_delete(request, id):
     producto = repo.get_by_id(id=id)
     repo.delete(producto=producto)
     return redirect('product_list')
+
 
 def product_update(request, id):
     product = repo.get_by_id(id = id)

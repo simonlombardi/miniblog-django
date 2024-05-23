@@ -20,6 +20,10 @@ from product.views.supplier_views import(
     supplier_delete,
     supplier_update,
 )
+from product.views.product_review_view import(
+    ProductReviewView,
+    ProductReviewCreateView,
+)
 
 urlpatterns = [
     path(route='', view=product_list, name='product_list'),
@@ -38,4 +42,8 @@ urlpatterns = [
     path(route='supplier/<int:id>/update/', view=supplier_update, name='supplier_update'),
     path(route='supplier/<int:id>/detail/', view=supplier_detail, name='supplier_detail'),
     path(route='supplier/<int:id>/delete/', view=supplier_delete, name='supplier_delete'),
+
+    path(route='product_review/', view=ProductReviewView.as_view(), name='product_reviews'),
+    path(route='product_review/create', view=ProductReviewCreateView.as_view(), name='product_reviews_create'),
+    
 ]
